@@ -260,10 +260,10 @@ const getResult = () => {
     acc = input.checked ? [...acc, input] : acc;
     return acc;
   }, []);
-  // if (inputsChecked.length < 11) {
-  //   alert('Ответьте на все вопросы!')
-  //   return;
-  // }
+  if (inputsChecked.length < 11) {
+    alert('Ответьте на все вопросы!')
+    return;
+  }
   inputsChecked.forEach(item => {
     const id = item.getAttribute('data-id') - 1;
     const isPositive = item.getAttribute('data-value') === 'positive'
