@@ -242,8 +242,12 @@ const renderHTML = () => {
     </div>`
   }, '');
 
+  container.classList.add('show');
+  container.innerHTML += `<p class="ppp center mb20 fz20">Для точного расчета подходящей для Вас системы ответьте на предлагаемые вопросы</p>`
   container.innerHTML += string;
   container.innerHTML += `<button id="result">Result</button>`;
+  document.getElementById('result').addEventListener('click', getResult);
+  document.querySelector('.hello').classList.add('hide');
 }
 
 const getResult = () => {
@@ -256,10 +260,10 @@ const getResult = () => {
     acc = input.checked ? [...acc, input] : acc;
     return acc;
   }, []);
-  if (inputsChecked.length < 11) {
-    alert('Ответьте на все вопросы!')
-    return;
-  }
+  // if (inputsChecked.length < 11) {
+  //   alert('Ответьте на все вопросы!')
+  //   return;
+  // }
   inputsChecked.forEach(item => {
     const id = item.getAttribute('data-id') - 1;
     const isPositive = item.getAttribute('data-value') === 'positive'
@@ -284,34 +288,46 @@ const getResult = () => {
   let resultIndex = resultArray.indexOf(max);
   const MAPA = {
     letstest: {
+      title: 'Letstest',
       img: 'assets/lets.png',
-      link: 'https://letstest.ru'
+      link: 'https://letstest.ru',
+      desc: 'В система Letstest доступны широкие возможности по созданию тестов. Разнообразные типы вопросов и гибкая настройка оценок позволяет создавать как простые тесты, так и психологические тестирования. Также система сразу готова к работе, не требуется скачивать и устанавливать какие-либо программы, необходим только браузер и доступ в интернет.'
     },
     onlinetestpad: {
+      title: 'Onlinetestpad',
       img: 'assets/online.png',
-      link: 'https://onlinetestpad.com/ru'
+      link: 'https://onlinetestpad.com/ru',
+      desc: 'Ресурс Оnlinetestpad дает возможность создавать различные тесты, опросы, логические задачи, кроссворды, комплексные задания. Можно создавать тесты как самостоятельно, так и на основе предложенных шаблонов, изменяя их в соответствии со своим заданием или пожеланием.'
     },
     google: {
+      title: 'Google формы',
       img: 'assets/google.png',
-      link: 'https://www.google.ru/forms/about/'
+      link: 'https://www.google.ru/forms/about/',
+      desc: 'Google формы позволяют выбирать типы вопросов – от простых тестовых полей до сложных шкал и сеток. Добавлять в форму видео-ролики с YouTube и фотографии. Статистику ответов вы найдете прямо в форме, также вы можете работать над формой вместе с друзьями, однокурсниками или коллегами.'
     },
     moodle: {
+      title: 'Moodle',
       img: 'assets/moodle.png',
-      link: 'https://moodle.org'
+      link: 'https://moodle.org',
+      desc: 'Система Мооdle имеет удобный интуитивно понятный интерфейс. Данный ресурс содержит обширный инструментарий для создания тестов, поддерживается несколько типов вопросов в тестовых заданиях (множественный выбор, на соответствие, верно/неверно, короткие ответы, эссе и др.)'
     }
   }
 
   const hello = document.querySelector('.hello');
   hello.classList.add('hide');
   container.innerHTML = `<form class="form">
-                      <p class="center mb20">Оптимальная система для вас: ${resultString[resultIndex]}</p>
+                      <p class="center mb20">Оптимальная система для вас: ${MAPA[resultString[resultIndex]].title}</p>
                       <img src="${MAPA[resultString[resultIndex]].img}" />
-                      <a class="center m20 mt20" target="_blank" rel="noreferrer" href="${MAPA[resultString[resultIndex]].link}">${MAPA[resultString[resultIndex]].link}</a>
+                      <div class="link mb20 mt20">
+                      <p>Чтобы ознакомиться с ресурсом подробнее, перейдите по ссылке:</p>
+                      <a class="center ml10" target="_blank" rel="noreferrer" href="${MAPA[resultString[resultIndex]].link}">${MAPA[resultString[resultIndex]].title}</a>
+                      </div>
+                      <p class="description">${MAPA[resultString[resultIndex]].desc}</p>
                       <button>Пройти опрос заново</button>
                       </form>`
 }
 
-renderHTML();
 window.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('result').addEventListener('click', getResult);
+  const begin = document.getElementById('begin');
+  begin.addEventListener('click', renderHTML);
 })
