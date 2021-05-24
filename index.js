@@ -316,7 +316,7 @@ const getResult = () => {
   const hello = document.querySelector('.hello');
   hello.classList.add('hide');
   container.innerHTML = `<form class="form">
-                      <p class="center mb20">Оптимальная система для вас: ${MAPA[resultString[resultIndex]].title}</p>
+                      <p class="center mb20 fwb">Оптимальная система для вас: ${MAPA[resultString[resultIndex]].title}</p>
                       <img src="${MAPA[resultString[resultIndex]].img}" />
                       <div class="link mb20 mt20">
                       <p>Чтобы ознакомиться с ресурсом подробнее, перейдите по ссылке:</p>
