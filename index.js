@@ -231,12 +231,12 @@ const renderHTML = () => {
         <div class="radio">
           <input type="radio" data-id="${item.id}" data-value="positive" id="${item.radioFirst.id}${item.id}"
                  name="${item.question}" value="${item.positive}">
-          <label for="${item.radioFirst.id}${item.id}">${item.id === 6 ? 'Бесплатная' : 'Да'}</label>
+          <label class="ml10" for="${item.radioFirst.id}${item.id}">${item.id === 6 ? 'Бесплатная' : 'Да'}</label>
         </div>
         <div class="radio">
           <input type="radio" data-id="${item.id}" data-value="negative" id="${item.radioTwo.id}${item.id}"
                  name="${item.question}" value="${item.negative}">
-          <label for="${item.radioTwo.id}${item.id}">${item.id === 6 ? 'Платная' : 'Нет'}</label>
+          <label class="ml10" for="${item.radioTwo.id}${item.id}">${item.id === 6 ? 'Платная' : 'Нет'}</label>
         </div>
       </div>
     </div>`
@@ -316,7 +316,7 @@ const getResult = () => {
   const hello = document.querySelector('.hello');
   hello.classList.add('hide');
   container.innerHTML = `<form class="form">
-                      <p class="center mb20 fwb">Оптимальная система для вас: ${MAPA[resultString[resultIndex]].title}</p>
+                      <p class="center mb20 fwb">Оптимальная система для Вас: ${MAPA[resultString[resultIndex]].title}</p>
                       <img src="${MAPA[resultString[resultIndex]].img}" />
                       <div class="link mb20 mt20">
                       <p>Чтобы ознакомиться с ресурсом подробнее, перейдите по ссылке:</p>
