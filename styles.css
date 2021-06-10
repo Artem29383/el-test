@@ -231,3 +231,7 @@ button:hover {
 .fwb {
   font-weight: bold;
 }
+
+.instruments {
+  max-width: 100%;
+}
